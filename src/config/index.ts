@@ -14,7 +14,7 @@ const pkginfo = readPkg.sync();
 const schema = Joi.object({
   NODE_ENV: Joi.string().valid("development", "production", "experiment", "test").default("development"),
 
-  APP_PORT: Joi.number().default(3000),
+  APP_PORT: Joi.number().default(6004),
   APP_NAME: Joi.string().default("service-demo"),
   APP_ROUTE: Joi.string().default("/"),
   APP_VERSION: Joi.string().default(`v${pkginfo.version || "1.0.0"}`),

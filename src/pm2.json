@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "server",
+      "name": "pkc-service-tasks",
       "script": "server.js",
       "watch": false,
       "instances": 1,

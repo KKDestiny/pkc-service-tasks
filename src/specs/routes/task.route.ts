@@ -3,59 +3,33 @@
  * @LastEditors: linxiaozhou.com
  * @Description: file content
  */
-const tags = ["1. 权限认证"];
+const tags = ["2. 任务"];
 const produces = ["application/json"];
 const consumes = ["application/json"];
 
 export default {
   paths: {
-    "/auth/login": {
-      post: {
+    "/tasks": {
+      get: {
         tags,
-        summary: "登录",
+        summary: "获取列表",
         produces,
         consumes,
-        parameters: [
-          {
-            name: "body",
-            in: "body",
-            required: true,
-            properties: {
-              name: {
-                type: "string",
-                required: true,
-                example: "用户1",
-                description: "用户名",
-              },
-              password: {
-                type: "string",
-                required: true,
-                example: "12345678",
-                description: "登录密码",
-              },
-            },
-          },
-        ],
+        parameters: [],
         responses: {
           200: {
-            description: "登录成功",
+            description: "成功",
             schema: {
               type: "object",
               properties: {
                 data: {
                   type: "object",
-                  properties: {
-                    token: {
-                      type: "string",
-                      example: "jfdklshfjasdhfj1212234",
-                    },
-                  },
                 },
               },
             },
           },
           400: {
-            description: "登录失败",
+            description: "失败",
             schema: {
               type: "object",
               properties: {
@@ -68,7 +42,7 @@ export default {
                     },
                     message: {
                       type: "string",
-                      example: "密码错误",
+                      example: "失败信息",
                     },
                   },
                 },

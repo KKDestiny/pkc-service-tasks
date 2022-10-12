@@ -91,7 +91,7 @@ dist
 lib
 databases
 info
-docs/website/swagger.json
+docs/exports
 __tests__/reports
 src/specs/tools/exports
 .env
