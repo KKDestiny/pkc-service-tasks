@@ -271,7 +271,7 @@ export class SchemaParser {
       case basicFullTypes.Date:
         Object.assign(result, {
           type: "string",
-          format: value?.format || "datetime",
+          format: value.format || "datetime",
         });
         break;
 
