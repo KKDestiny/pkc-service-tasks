@@ -8,7 +8,8 @@ import mongoose, { Schema } from "mongoose";
 export const schema = new Schema(
   {
     projectname: { type: String, description: "项目名称", required: true },
-    intro: { type: String, description: "项目说明", required: true },
+    _id_in_app: { type: String, description: "存储在app的id", required: false },
+    intro: { type: String, description: "项目说明" },
     group: {
       type: String,
       description: "分组",

@@ -20,6 +20,7 @@
     "swagger": "npx babel-node --extensions \".js,.ts\" scripts/gen-swagger.ts",
     "postman": "npx babel-node --extensions \".js,.ts\" scripts/gen-postman.ts",
     "schemas": "npx babel-node --extensions \".js,.ts\" scripts/gen-schemas.ts",
+    "migrate": "npx babel-node --extensions \".js,.ts\" migration/from-app-to-server.ts",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "npx jest --coverage --detectOpenHandles --forceExit",
     "test:watch": "npx jest --watchAll --runInBand --detectOpenHandles",
@@ -28,6 +29,7 @@
     "lint:fix": "npx eslint . --fix"
   },
   "dependencies": {
+    "@types/fs-extra": "^9.0.13",
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
     "cookie-parser": "^1.4.5",

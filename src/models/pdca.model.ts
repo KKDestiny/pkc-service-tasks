@@ -7,6 +7,7 @@ import mongoose, { Schema } from "mongoose";
 
 export const schema = new Schema(
   {
+    _id_in_app: { type: String, description: "存储在app的id", required: false },
     // 基本信息
     startDate: {
       type: String,
@@ -14,11 +15,11 @@ export const schema = new Schema(
       required: true,
       format: "YYYY-MM-DD",
     },
-    intro: { type: String, description: "任务说明", required: true },
+    intro: { type: String, description: "任务说明", required: false },
     tasks: {
       type: [
         {
-          taskId: { type: String, description: "任务id" },
+          taskId: { type: Schema.Types.ObjectId, description: "任务id" },
           taskname: {
             type: String,
             description: "任务名称(加入PDCA时的名称，仅在任务删除后可使用此字段)",

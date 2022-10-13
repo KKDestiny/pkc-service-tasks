@@ -8,8 +8,9 @@ import mongoose, { Schema } from "mongoose";
 export const schema = new Schema(
   {
     // 基本信息
+    _id_in_app: { type: String, description: "存储在app的id", required: false },
     taskname: { type: String, description: "任务名称", required: true },
-    intro: { type: String, description: "任务说明", required: true },
+    intro: { type: String, description: "任务说明", required: false },
     conclusion: { type: String, description: "任务结论", required: false },
     status: {
       type: String,
@@ -38,6 +39,7 @@ export const schema = new Schema(
         "monthly", // 每月计划
         "annually", // 每年计划
         "none", // 长远计划
+        "temp", // 临时任务
       ],
     },
     day: {
@@ -90,8 +92,8 @@ export const schema = new Schema(
     },
 
     // 关联
-    parentId: { type: String, description: "父级任务", required: false },
-    projectId: { type: String, description: "绑定项目", required: false },
+    parentId: { type: Schema.Types.ObjectId, description: "父级任务", required: false },
+    projectId: { type: Schema.Types.ObjectId, description: "绑定项目", required: false },
     articleId: { type: String, description: "绑定文章", required: false },
 
     // 导入

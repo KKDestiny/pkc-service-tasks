@@ -45,6 +45,10 @@ export class BaseRepository<T> {
     return await this.model.findOneAndDelete(data);
   }
 
+  async insertMany(list: Array<T>): Promise<any> {
+    return await this.model.insertMany(list);
+  }
+
   async list(options?: repoOptions): Promise<[T]> {
     if (!options) options = {};
     const criteria = options.criteria || {};
