@@ -108,6 +108,7 @@ export const schema = new Schema(
       description: "原始issue信息",
       required: false,
     },
+    userId: { type: Schema.Types.ObjectId, description: "所有者ID", required: false },
   },
   {
     timestamps: true,

@@ -12,6 +12,8 @@ import pdcaRepo from "../src/repositories/pdca.repository";
 
 createDatabase();
 
+const userId = ``;
+
 async function run() {
   const projects = await fs.readJSON(`${__dirname}/sources/LIN_PROJECTS.sqlite.json`);
   const tasks = await fs.readJSON(`${__dirname}/sources/LIN_TASKS.sqlite.json`);
@@ -27,6 +29,7 @@ async function run() {
       projects[index].group = "work";
     }
     projects[index].status = "open";
+    projects[index].userId = userId;
   }
   const projectRes = await projectRepo.insertMany(projects);
   console.log(projectRes);
@@ -42,6 +45,7 @@ async function run() {
         tasks[index].projectId = project._id;
       }
     }
+    tasks[index].userId = userId;
   }
   const taskRes = await taskRepo.insertMany(tasks);
   console.log(taskRes);
@@ -62,6 +66,7 @@ async function run() {
       }
       pdcas[index].tasks = tasks;
     }
+    pdcas[index].userId = userId;
   }
   const pdcaRes = await pdcaRepo.insertMany(pdcas);
   console.log(pdcaRes);

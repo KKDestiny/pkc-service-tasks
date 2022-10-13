@@ -30,6 +30,7 @@ export const schema = new Schema(
     },
     check: { type: String, description: "检查", required: false },
     act: { type: String, description: "总结", required: false },
+    userId: { type: Schema.Types.ObjectId, description: "所有者ID", required: false },
   },
   {
     timestamps: true,

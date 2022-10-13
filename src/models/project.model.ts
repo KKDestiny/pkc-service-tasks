@@ -29,6 +29,7 @@ export const schema = new Schema(
     },
     parentId: { type: String, description: "父级项目", required: false },
     bookId: { type: String, description: "Wiki书籍id", required: false },
+    userId: { type: Schema.Types.ObjectId, description: "所有者ID", required: false },
   },
   {
     timestamps: true,
