@@ -12,7 +12,7 @@ import pdcaRepo from "../src/repositories/pdca.repository";
 
 createDatabase();
 
-const userId = ``;
+const userId;
 
 async function run() {
   const projects = await fs.readJSON(`${__dirname}/sources/LIN_PROJECTS.sqlite.json`);

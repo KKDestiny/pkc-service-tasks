@@ -13,7 +13,14 @@ import APIError from "../utils/apierror.util";
 
 async function list(req: IRequest, res: Response, next: NextFunction) {
   try {
-    const result: Array<PDCAType> = await pdcaRepo.list();
+    const { _id } = req.user;
+    const { status } = req.query;
+    const criteria = { userId: _id };
+    if (status) {
+      Object.assign(criteria, { status });
+    }
+
+    const result: Array<PDCAType> = await pdcaRepo.list({ criteria });
     if (!result) {
       throw new APIError("list pdca failed", 400);
     }
