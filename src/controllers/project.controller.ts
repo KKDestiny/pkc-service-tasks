@@ -33,6 +33,25 @@ async function list(req: IRequest, res: Response, next: NextFunction) {
   }
 }
 
+async function create(req: IRequest, res: Response, next: NextFunction) {
+  try {
+    const { _id } = req.user;
+    const data = { userId: _id, ...(req.body || {}) };
+
+    const result: ProjectType = await projectRepo.create(data);
+    if (!result) {
+      throw new APIError("create project failed", 400);
+    }
+
+    return res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 export default {
   list,
+  create,
 };
