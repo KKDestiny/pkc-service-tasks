@@ -28,7 +28,6 @@ async function list(req: IRequest, res: Response, next: NextFunction) {
     return next(error);
   }
 }
-
 async function create(req: IRequest, res: Response, next: NextFunction) {
   try {
     const { _id } = req.user;
@@ -36,7 +35,44 @@ async function create(req: IRequest, res: Response, next: NextFunction) {
 
     const result: TaskType = await taskRepo.create(data);
     if (!result) {
-      throw new APIError("create tasks failed", 400);
+      throw new APIError("create pdca failed", 400);
+    }
+
+    return res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
+async function update(req: IRequest, res: Response, next: NextFunction) {
+  try {
+    const { _id } = req.user;
+    const criteria = { userId: _id, ...(req.params || {}) };
+    const updates = req.body;
+
+    const result: TaskType = await taskRepo.findByIdAndUpdate(criteria, updates);
+    if (!result) {
+      throw new APIError("create pdca failed", 400);
+    }
+
+    return res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
+async function remove(req: IRequest, res: Response, next: NextFunction) {
+  try {
+    const { _id } = req.user;
+    const criteria = { userId: _id, ...(req.params || {}) };
+
+    const result: TaskType = await taskRepo.remove(criteria);
+    if (!result) {
+      throw new APIError("create pdca failed", 400);
     }
 
     return res.status(200).json({
@@ -50,4 +86,6 @@ async function create(req: IRequest, res: Response, next: NextFunction) {
 export default {
   list,
   create,
+  update,
+  remove,
 };
