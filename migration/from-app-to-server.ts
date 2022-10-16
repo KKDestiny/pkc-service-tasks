@@ -13,9 +13,9 @@ createDatabase();
 const userId = undefined;
 
 async function run() {
-  const projects = await fs.readJSON(`${__dirname}/sources/LIN_PROJECTS.sqlite.json`);
-  const tasks = await fs.readJSON(`${__dirname}/sources/LIN_TASKS.sqlite.json`);
-  const pdcas = await fs.readJSON(`${__dirname}/sources/LIN_PDCAS.sqlite.json`);
+  const projects = await fs.readJSON(`${__dirname}/sources/LIN_PROJECTS.sqlite.db`);
+  const tasks = await fs.readJSON(`${__dirname}/sources/LIN_TASKS.sqlite.db`);
+  const pdcas = await fs.readJSON(`${__dirname}/sources/LIN_PDCAS.sqlite.db`);
 
   await migrationFromAPPToServer({ userId, projects, tasks, pdcas });
 }
