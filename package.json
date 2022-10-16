@@ -1,6 +1,6 @@
 {
   "name": "pkc-service-tasks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "backend service for task-junkman",
   "author": "linxiaozhou.com",
   "main": "./src/server.ts",
