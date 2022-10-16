@@ -14,11 +14,7 @@ import APIError from "../utils/apierror.util";
 async function list(req: IRequest, res: Response, next: NextFunction) {
   try {
     const { _id } = req.user;
-    const { status } = req.query;
-    const criteria = { userId: _id };
-    if (status) {
-      Object.assign(criteria, { status });
-    }
+    const criteria = { userId: _id, ...(req.query || {}) };
 
     const result: Array<ProjectType> = await projectRepo.list({ criteria });
     if (!result) {
