@@ -27,6 +27,11 @@ export const schema = new Schema(
         "aborted", // 废弃
       ],
     },
+
+    isShared: { type: Boolean, description: "是否属于共享项目，共享后将对所有人可见", required: false },
+    isPublic: { type: Boolean, description: "是否属于公开项目，公开后不需要登录即可看到此项目及其所有的任务", required: false },
+    isStar: { type: Boolean, description: "加星标项目", required: false },
+
     parentId: { type: String, description: "父级项目", required: false },
     bookId: { type: String, description: "Wiki书籍id", required: false },
     userId: { type: Schema.Types.ObjectId, description: "所有者ID", required: false },

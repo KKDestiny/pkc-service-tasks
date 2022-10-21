@@ -8,6 +8,8 @@ import express from "express";
 import auth from "../middlewares/auth.middleware";
 import admin from "../middlewares/admin.middleware";
 
+import squareRoute from "./square.route";
+
 import projectRoute from "./project.route";
 import taskRoute from "./task.route";
 import pdcaRoute from "./pdca.route";
@@ -15,6 +17,8 @@ import pdcaRoute from "./pdca.route";
 import migrationAdminRoute from "./migration.admin.route";
 
 const router = express.Router({ mergeParams: true });
+
+router.use("/square", squareRoute);
 
 router.use(auth);
 router.use("/projects", projectRoute);

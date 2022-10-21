@@ -3,4 +3,6 @@
  * @LastEditors: linxiaozhou.com
  * @Description: file content
  */
-export interface ProjectType {}
+export interface ProjectType {
+  _id: string;
+}
