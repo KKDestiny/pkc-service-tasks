@@ -33,6 +33,9 @@ async function create(req: IRequest, res: Response, next: NextFunction) {
   try {
     const { _id } = req.user;
     const data = { userId: _id, ...(req.body || {}) };
+    if (!data.status) {
+      data.status = "open";
+    }
 
     const result: ProjectType = await projectRepo.create(data);
     if (!result) {
